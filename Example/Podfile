@@ -1,0 +1,8 @@
+use_frameworks!
+target 'GEOTRANS_Tests' do
+  pod 'GEOTRANS', :path => '..'
+  
+  pod 'Specta'
+  pod 'Expecta'
+  pod 'YLFileReader'
+end

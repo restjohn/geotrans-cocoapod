@@ -1,0 +1,4 @@
+[submodule "geotrans-src"]
+	path = geotrans-src
+	url = https://github.com/restjohn/geotrans
+	branch = master
