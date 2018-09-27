@@ -1,4 +1,4 @@
-# GEOTRANS Cocoapod Distribution
+# GEOTRANS CocoaPod Distribution
 
 The product was developed using GEOTRANS, a product of the National Geospatial-Intelligence Agency (NGA) and U.S. Army Engineering Research and Development Center.
 
