@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
     s.homepage         = 'http://earth-info.nga.mil/GandG/update/index.php?dir=wgs84&action=wgs84#tab_geotrans'
     s.license          = { :type => 'MIT', :file => 'LICENSE' }
     s.author           = { 'restjohn' => 'restjohn@users.noreply.github.com' }
-    s.source           = { :git => 'https://github.com/restjohn/geotrans.git', :tag => s.version.to_s }
+    s.source           = { :git => 'https://github.com/restjohn/geotrans-cocoapod.git', :branch => 'master', :submodules => true }
     s.social_media_url = 'https://twitter.com/NGA_GEOINT'
   
     s.ios.deployment_target = '9.0'
