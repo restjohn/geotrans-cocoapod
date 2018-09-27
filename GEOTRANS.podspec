@@ -11,7 +11,9 @@ Pod::Spec.new do |s|
   #   * Finally, don't worry about the indent, CocoaPods strips it!
   
     s.description      = <<-DESC
-  TODO: Add long description of the pod here.
+  This pod is a simple wrapped distribution of the National Geospatial-Intelligence Agency (NGA) Mensuration Services Program (MSP)
+  GEOTRANS library, available at http://earth-info.nga.mil/GandG/update/index.php?dir=wgs84&action=wgs84#tab_geotrans.  
+  There are also helper classes that provide Objective-C APIs wrapping the GEOTRANS C++ APIs.
                          DESC
   
     s.homepage         = 'http://earth-info.nga.mil/GandG/update/index.php?dir=wgs84&action=wgs84#tab_geotrans'
@@ -24,8 +26,8 @@ Pod::Spec.new do |s|
     s.macos.deployment_target = '10.10'
   
     s.source_files = [
-      'geotrans-src/CCS/src/**/*',
-      'GEOTRANS/Classes/*'
+      'geotrans-src/CCS/src/**/*.{h,cpp}',
+      'Classes/*.{h,m,mm}'
     ]
 
     s.frameworks = 'CoreLocation'   
