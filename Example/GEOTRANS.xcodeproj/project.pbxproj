@@ -26,7 +26,7 @@
 		6003F5B7195388D20070C39A /* Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tests-Info.plist"; sourceTree = "<group>"; };
 		6003F5B9195388D20070C39A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
-		60757B4B943E9E9921BB5473 /* GEOTRANS.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = GEOTRANS.podspec; path = ../GEOTRANS.podspec; sourceTree = "<group>"; };
+		60757B4B943E9E9921BB5473 /* GEOTRANS.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = GEOTRANS.podspec; path = ../GEOTRANS.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		78EEF2C3717A5E7639D7B98F /* Pods_GEOTRANS_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GEOTRANS_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D6C089E215D4D9900032F02 /* mgrsToGeo_WE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = mgrsToGeo_WE.txt; path = "../../geotrans-src/SpreadsheetTester/TestFiles/outputs/output/mgrsToGeo_WE.txt"; sourceTree = "<group>"; };
 		7D6C089F215D4D9900032F02 /* geoToMgrs_WE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = geoToMgrs_WE.txt; path = "../../geotrans-src/SpreadsheetTester/TestFiles/outputs/output/geoToMgrs_WE.txt"; sourceTree = "<group>"; };

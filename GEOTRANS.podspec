@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|
     s.name             = 'GEOTRANS'
-    s.version          = '3.7'
+    s.version          = '1.0.0-beta1'
     s.summary          = 'National Geospatial-Intelligence Agency (NGA) Mensuration Services Program (MSP) GEOTRANS library'
   
   # This description is used to generate tags and improve search results.
