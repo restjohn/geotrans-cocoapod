@@ -31,7 +31,8 @@ GEOTRANS is available through [CocoaPods](https://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod 'GEOTRANS', :git => 'https://github.com/restjohn/geotrans-cocoapod', :branch => 'master'
+pod 'GEOTRANS', :git => 'https://github.com/restjohn/geotrans-cocoapod', 
+    :branch => 'master', :submodules => true
 ```
 
 ## Author
