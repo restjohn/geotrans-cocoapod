@@ -6,7 +6,7 @@
 //  Copyright 2018 restjohn. All rights reserved.
 //
 
-#import "MGRSHelper.h"
+#import "MSPMGRSHelper.h"
 #import "YLFileReader.h"
 
 #define COL_TEST_ID 0
@@ -17,14 +17,14 @@
 #define COL_MGRS_GEO_EXPECTED_LAT 13
 #define COL_MGRS_GEO_EXPECTED_LON 14
 
-@interface MGRSHelperTestUtil : NSObject
+@interface MSPMGRSHelperTestUtil : NSObject
 
 - (void)loadGeoToMgrsTestRecords:(void (^)(NSString *testId, CLLocationCoordinate2D wgs84Coord, NSString *expectedMgrs))consumer;
 - (void)loadMgrsToGeoTestRecords:(void (^)(NSString *testId, NSString *mgrsCoord, CLLocationCoordinate2D expectedLocation))consumer;
 
 @end
 
-@implementation MGRSHelperTestUtil
+@implementation MSPMGRSHelperTestUtil
 
 - (void)loadGeoToMgrsTestRecords:(void (^)(NSString *testId, CLLocationCoordinate2D wgs84Coord, NSString *expectedMgrs))consumer
 {
@@ -74,11 +74,11 @@
 
 @end
 
-SpecBegin(MGRSHelper)
+SpecBegin(MSPMGRSHelper)
 
-describe(@"MGRSHelper", ^{
+describe(@"MSPMGRSHelper", ^{
 
-    MGRSHelperTestUtil *util = [[MGRSHelperTestUtil alloc] init];
+    MSPMGRSHelperTestUtil *util = [[MSPMGRSHelperTestUtil alloc] init];
 
     beforeAll(^{
 
@@ -90,10 +90,10 @@ describe(@"MGRSHelper", ^{
 
     it(@"converts wgs84 to mgrs", ^{
 
-        MGRSHelper *helper = [[MGRSHelper alloc] init];
+        MSPMGRSHelper *helper = [[MSPMGRSHelper alloc] init];
         NSMutableArray<NSString *> *failures = [NSMutableArray array];
         [util loadGeoToMgrsTestRecords:^(NSString *testId, CLLocationCoordinate2D wgs84Coord, NSString *expectedMgrs) {
-            NSString *mgrs = [helper mgrsFromWgs84Degrees:wgs84Coord utmZone:0];
+            NSString *mgrs = [helper mgrsFromWgs84Degrees:wgs84Coord utmZone:0 error:NULL];
             if (![mgrs isEqualToString:expectedMgrs]) {
                 [failures addObject:[NSString stringWithFormat:@"%@ %f %f expected %@ but was %@", testId, wgs84Coord.longitude, wgs84Coord.latitude, expectedMgrs, mgrs]];
             }
@@ -106,10 +106,10 @@ describe(@"MGRSHelper", ^{
 
     it(@"converts mgrs to wgs84", ^{
 
-        MGRSHelper *helper = [[MGRSHelper alloc] init];
+        MSPMGRSHelper *helper = [[MSPMGRSHelper alloc] init];
         NSMutableArray<NSString *> *failures = [NSMutableArray array];
         [util loadMgrsToGeoTestRecords:^(NSString *testId, NSString *mgrs, CLLocationCoordinate2D expectedLoc) {
-            CLLocationCoordinate2D loc = [helper wgs84DegreesFromMgrs:mgrs];
+            CLLocationCoordinate2D loc = [helper wgs84DegreesFromMgrs:mgrs error:NULL];
             double latDiff = fabs(loc.latitude - expectedLoc.latitude);
             double lonDiff = fabs(loc.longitude - expectedLoc.longitude);
             if (latDiff > 1.0e-6 || lonDiff > 1.0e-6) {
@@ -122,7 +122,87 @@ describe(@"MGRSHelper", ^{
             failure([failures componentsJoinedByString:@"\n  "]);
         }
     });
-    
+
+    it(@"handles bad mgrs string", ^{
+
+        MSPMGRSHelper *helper = [[MSPMGRSHelper alloc] init];
+        NSError *error;
+        @try {
+            [helper wgs84DegreesFromMgrs:@"12345" error:&error];
+        }
+        @catch (...) {
+            failure([NSString stringWithFormat:@"caught exception"]);
+        }
+
+        expect(error).toNot.beNil();
+        expect(error.localizedDescription.length).to.beGreaterThan(@0);
+        expect(error.domain).to.equal(MSPMGRSErrorDomain);
+        expect(error.code).to.equal(MSPMGRSError);
+    });
+
+    it(@"handles bad latitude", ^{
+
+        MSPMGRSHelper *helper = [[MSPMGRSHelper alloc] init];
+        NSError *error;
+        @try {
+            [helper mgrsFromWgs84Degrees:CLLocationCoordinate2DMake(91.0, 0.0) utmZone:0 error:&error];
+        }
+        @catch (...) {
+            failure([NSString stringWithFormat:@"caught exception"]);
+        }
+
+        expect(error).toNot.beNil();
+        expect(error.localizedDescription.length).to.beGreaterThan(@0);
+        expect(error.domain).to.equal(MSPMGRSErrorDomain);
+        expect(error.code).to.equal(MSPMGRSError);
+    });
+
+    it(@"handles bad longitude", ^{
+
+        MSPMGRSHelper *helper = [[MSPMGRSHelper alloc] init];
+        NSError *error;
+        @try {
+            [helper mgrsFromWgs84Degrees:CLLocationCoordinate2DMake(0.0, 361.0) utmZone:0 error:&error];
+        }
+        @catch (...) {
+            failure([NSString stringWithFormat:@"caught exception"]);
+        }
+
+        expect(error).toNot.beNil();
+        expect(error.localizedDescription.length).to.beGreaterThan(@0);
+        expect(error.domain).to.equal(MSPMGRSErrorDomain);
+        expect(error.code).to.equal(MSPMGRSError);
+    });
+
+    it(@"handles bad utm zone", ^{
+
+        MSPMGRSHelper *helper = [[MSPMGRSHelper alloc] init];
+        NSError *error;
+        @try {
+            [helper mgrsFromWgs84Degrees:CLLocationCoordinate2DMake(0.0, 0.0) utmZone:-1 error:&error];
+        }
+        @catch (...) {
+            failure([NSString stringWithFormat:@"caught exception"]);
+        }
+
+        expect(error).toNot.beNil();
+        expect(error.localizedDescription.length).to.beGreaterThan(@0);
+        expect(error.domain).to.equal(MSPMGRSErrorDomain);
+        expect(error.code).to.equal(MSPMGRSError);
+
+        @try {
+            [helper mgrsFromWgs84Degrees:CLLocationCoordinate2DMake(0.0, 0.0) utmZone:61 error:&error];
+        }
+        @catch (...) {
+            failure([NSString stringWithFormat:@"caught exception"]);
+        }
+
+        expect(error).toNot.beNil();
+        expect(error.localizedDescription.length).to.beGreaterThan(@0);
+        expect(error.domain).to.equal(MSPMGRSErrorDomain);
+        expect(error.code).to.equal(MSPMGRSError);
+    });
+
     afterEach(^{
 
     });
