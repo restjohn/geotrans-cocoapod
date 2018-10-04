@@ -14,7 +14,6 @@
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		7D6C08A0215D4D9900032F02 /* mgrsToGeo_WE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7D6C089E215D4D9900032F02 /* mgrsToGeo_WE.txt */; };
 		7D6C08A1215D4D9900032F02 /* geoToMgrs_WE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7D6C089F215D4D9900032F02 /* geoToMgrs_WE.txt */; };
-		7DDDFE3B215AA6FE0009175D /* MSPMGRSHelperSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DDDFE3A215AA6FE0009175D /* MSPMGRSHelperSpec.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,7 +29,6 @@
 		78EEF2C3717A5E7639D7B98F /* Pods_GEOTRANS_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GEOTRANS_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D6C089E215D4D9900032F02 /* mgrsToGeo_WE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = mgrsToGeo_WE.txt; path = "../../geotrans-src/SpreadsheetTester/TestFiles/outputs/output/mgrsToGeo_WE.txt"; sourceTree = "<group>"; };
 		7D6C089F215D4D9900032F02 /* geoToMgrs_WE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = geoToMgrs_WE.txt; path = "../../geotrans-src/SpreadsheetTester/TestFiles/outputs/output/geoToMgrs_WE.txt"; sourceTree = "<group>"; };
-		7DDDFE3A215AA6FE0009175D /* MSPMGRSHelperSpec.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSPMGRSHelperSpec.m; sourceTree = "<group>"; };
 		7F94B3A6C19B0A5EBA4A3B99 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		AD08E231FC91455D4650DA7E /* Pods-GEOTRANS_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GEOTRANS_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GEOTRANS_Tests/Pods-GEOTRANS_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		E04747D0558DA46201857B48 /* Pods-GEOTRANS_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GEOTRANS_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GEOTRANS_Tests/Pods-GEOTRANS_Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -86,7 +84,6 @@
 		6003F5B5195388D20070C39A /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				7DDDFE3A215AA6FE0009175D /* MSPMGRSHelperSpec.m */,
 				6003F5B6195388D20070C39A /* Supporting Files */,
 			);
 			path = Tests;
@@ -244,7 +241,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7DDDFE3B215AA6FE0009175D /* MSPMGRSHelperSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,6 +1,6 @@
 PODS:
   - Expecta (1.0.6)
-  - GEOTRANS (1.0.0-beta1)
+  - GEOTRANS (3.7)
   - Specta (1.0.7)
   - YLFileReader (0.0.2)
 
@@ -22,7 +22,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Expecta: 3b6bd90a64b9a1dcb0b70aa0e10a7f8f631667d5
-  GEOTRANS: 129ef4655164d4aa70f6643f902aee157aaf510c
+  GEOTRANS: 798b90e6c0ef8d3ab9648f0b60830b63b1c52a66
   Specta: 3e1bd89c3517421982dc4d1c992503e48bd5fe66
   YLFileReader: 9e0b48bdd954e18e030f3675e2a83b33f2c02b93
 
